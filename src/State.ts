@@ -71,45 +71,6 @@ export const updateDigitSet = (state: State, digitSet: DigitSet, digits: Set<num
     }
 }
 
-export const toggleDigit = (state: State, digitSet: DigitSet, digit: number): State => {
-    const oneDigits = new Set(state.oneDigits)
-    const tenDigits = new Set(state.tenDigits)
-
-    const activeDigits = digitSet == "ones" ? oneDigits : tenDigits
-    if (activeDigits.has(digit)) {
-        activeDigits.delete(digit)
-    } else {
-        activeDigits.add(digit)
-    }
-
-    return {
-        ...state,
-        oneDigits,
-        tenDigits,
-    }
-}
-
-export const clearDigits = (state: State, digitSet: DigitSet): State => {
-    const oneDigits = new Set(state.oneDigits)
-    const tenDigits = new Set(state.tenDigits)
-
-    switch (digitSet) {
-        case "ones":
-            oneDigits.clear();
-            break;
-
-        case "tens":
-            tenDigits.clear();
-            break;
-    }
-
-    return {
-        ...state,
-        oneDigits,
-        tenDigits,
-    }
-}
-
 export const updateGte = (state: State, gte: number): State => ({
     ...state,
     gte,
